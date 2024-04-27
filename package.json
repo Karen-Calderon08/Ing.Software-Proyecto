@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/Karen-Calderon08/Ing.Software-Proyecto/issues"
   },
-  "homepage": "https://github.com/Karen-Calderon08/Ing.Software-Proyecto#readme"
+  "homepage": "https://github.com/Karen-Calderon08/Ing.Software-Proyecto#readme",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
 }
