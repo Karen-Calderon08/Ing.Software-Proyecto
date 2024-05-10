@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id         Int        @id @default(autoincrement())
+  nombre     String
+  apellido   String
+  correo     String     @unique
+  direccion  String?
+  contrasena String
+  Carrito    Carrito[]
+  Playlist   Playlist[]
+  Pedido     Pedido[]
+}
+
+model Genero {
+  id      Int       @id @default(autoincrement())
+  nombre  String
+  Cancion Cancion[]
+}
+
+model Cancion {
+  id            Int             @id @default(autoincrement())
+  nombre        String
+  artista       String
+  generoId      Int
+  genero        Genero          @relation(fields: [generoId], references: [id])
+  duracion      String
+  Vinilo        Vinilo[]
+  MP3           MP3[]
+  Carrito       Carrito[]
+  Playlist      Playlist[]
+  PedidoDetalle PedidoDetalle[]
+}
+
+model Vinilo {
+  id        Int     @id @default(autoincrement())
+  cancionId Int
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
+  caratula  String
+  stock     Int
+}
+
+model MP3 {
+  id        Int     @id @default(autoincrement())
+  cancionId Int
+  tamano    String
+  duracion  String
+  calidad   String
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
+}
+
+model Carrito {
+  id        Int     @id @default(autoincrement())
+  clienteId Int
+  cancionId Int
+  cantidad  Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
+}
+
+model Playlist {
+  id        Int     @id @default(autoincrement())
+  clienteId Int
+  cancionId Int
+  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
+}
+
+model Pedido {
+  id            Int             @id @default(autoincrement())
+  fechaCreacion DateTime        @default(now())
+  clienteId     Int
+  cancionId     Int
+  estado        String
+  cliente       Cliente         @relation(fields: [clienteId], references: [id])
+  PedidoDetalle PedidoDetalle[]
+}
+
+model PedidoDetalle {
+  id        Int     @id @default(autoincrement())
+  pedidoId  Int
+  cancionId Int
+  formato   String
+  cantidad  Int
+  pedido    Pedido  @relation(fields: [pedidoId], references: [id])
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
+}
+
