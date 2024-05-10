@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
 })
 
 // router.post('/', async (req, res) => {
-//   const =  
+//   const =
 //   const querys = req.query
 //   const acceptedFormats = ['vinilo', 'MP3']
 //   if (querys.formato && !acceptedFormats.includes(querys.formato)) {
