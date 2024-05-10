@@ -4,16 +4,17 @@ El servidor backend de nuestro proyecto. Utiliza Express.js como framework y Pri
 
 ## Cómo hacerlo funcionar
 
-1. Navega a la carpeta `backend` en tu terminal.
 
-```sh
-cd backend
-```
-
-2. Instala las dependencias necesarias con npm.
+1. Instala las dependencias necesarias con npm.
 
 ```sh
 npm install
+```
+
+2. Navega a la carpeta `backend` en tu terminal.
+
+```sh
+cd backend
 ```
 
 <!-- 3.() Copia el archivo `.env.example` a un nuevo archivo llamado `.env` y rellena las variables de entorno necesarias.
