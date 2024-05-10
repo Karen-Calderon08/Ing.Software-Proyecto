@@ -36,8 +36,8 @@ model Cancion {
   nombre        String
   artista       String
   generoId      Int
-  genero        Genero          @relation(fields: [generoId], references: [id])
   duracion      String
+  genero        Genero          @relation(fields: [generoId], references: [id])
   Vinilo        Vinilo[]
   MP3           MP3[]
   Carrito       Carrito[]
@@ -48,9 +48,9 @@ model Cancion {
 model Vinilo {
   id        Int     @id @default(autoincrement())
   cancionId Int
-  cancion   Cancion @relation(fields: [cancionId], references: [id])
   caratula  String
   stock     Int
+  cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
 
 model MP3 {
