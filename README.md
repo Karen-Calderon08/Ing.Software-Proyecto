@@ -69,3 +69,25 @@ El servidor utiliza Express.js para manejar las solicitudes HTTP. Prisma se util
   "test": "node --experimental-vm-modules ../node_modules/jest/bin/jest.js"
   }
 ```
+
+## Ejecución de pruebas
+
+Para ejecutar las pruebas en este proyecto, sigue estos pasos:
+
+1. Asegúrate de tener instalado Node.js y npm en tu sistema. Puedes descargarlos desde [aquí](https://nodejs.org/).
+
+2. Instala las dependencias del proyecto con el siguiente comando, en caso de no tenerlas :
+```sh
+npm install
+```
+
+3. Navega hasta el directorio del proyecto en tu terminal, a la carpeta /backend.
+
+
+4.Ejecuta las pruebas con el siguiente comando:
+
+```sh
+npm run test
+```
+
+Este comando ejecutará todas las pruebas definidas en los archivos de prueba en el directorio backend/src/tests/, (por ahora metan los test dentro de backend/src/tests/test.js).
