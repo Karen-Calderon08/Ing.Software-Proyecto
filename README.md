@@ -128,3 +128,23 @@ git push origin nombre_de_tu_rama
     - Escribe un título y una descripción para tu PR. Cuando hayas terminado, haz clic en 'Create pull request'.
 
 ¡Eso es todo! Ahora has creado un PR.
+
+## Actualización del Repositorio Local
+
+Para mantener tu repositorio local actualizado con el repositorio remoto, sigue estos pasos:
+
+1. **Obtener los cambios del repositorio remoto:** Usa el comando `git pull origin` para obtener los cambios más recientes del repositorio remoto estando en la rama main local. Esto no afectará a tus archivos locales.
+
+2. **Cambiar a la rama que quieres actualizar:** Usa el comando `git checkout nombre_de_la_rama` para cambiar a la rama que quieres actualizar, ejemplo `git checkout andres`.
+
+3. **Fusionar los cambios en tu rama local:** Usa el comando `git merge main` para fusionar los cambios del repositorio remoto en tu rama local.
+
+Aquí están los comandos:
+
+```sh
+git pull origin
+git checkout nombre_de_la_rama
+git merge main
+
+```
+Asegurense de no tener cambios que no hayan echo commit por que puede incurrir en errores al momento de hacer la combinacion de ramas (merge)
