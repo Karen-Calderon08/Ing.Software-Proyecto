@@ -91,3 +91,40 @@ npm run test
 ```
 
 Este comando ejecutará todas las pruebas definidas en los archivos de prueba en el directorio backend/src/tests/, (por ahora metan los test dentro de backend/src/tests/test.js).
+
+## Creación de un Pull Request (PR)
+
+Sigue estos pasos para crear un PR:
+
+1. **Crear una nueva rama:** En tu terminal, navega hasta el directorio del proyecto y crea una nueva rama con el comando 
+
+```sh
+git checkout -b nombre_de_tu_rama
+```
+
+ Asegúrate de reemplazar `nombre_de_tu_rama` con su nombre.
+
+2. **Realizar cambios:** Realiza los cambios necesarios en tu código. Una vez que hayas terminado, puedes verificar los cambios con el comando 
+
+```sh
+git status
+```
+
+
+3. **Agregar y confirmar cambios:** Agrega los cambios a la etapa de Git con el comando `git add .`. Luego, confirma los cambios con el comando `git commit -m "tu mensaje de commit"`. Asegúrate de reemplazar `tu mensaje de commit` con un mensaje descriptivo de los cambios que has realizado.
+
+4. **Subir la rama al repositorio remoto:** Sube tu rama al repositorio remoto con el comando 
+
+```sh
+git push origin nombre_de_tu_rama
+```
+
+5. **Crear un PR en GitHub:**
+    - Ve a la página principal de tu repositorio en GitHub.
+    - Haz clic en el botón 'New pull request'.
+    - En la página 'Compare changes', selecciona tu rama en el menú desplegable 'compare'.
+    - Revisa tus cambios y asegúrate de que son los que quieres incluir en el PR.
+    - Cuando estés listo, haz clic en el botón 'Create pull request'.
+    - Escribe un título y una descripción para tu PR. Cuando hayas terminado, haz clic en 'Create pull request'.
+
+¡Eso es todo! Ahora has creado un PR.
