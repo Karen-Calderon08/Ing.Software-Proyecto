@@ -1,10 +1,7 @@
 // import sum from '../funciones/sum'
 import { test, expect } from '@jest/globals'
 import { validarFormatoCancion } from '../funciones/validarFormatoCancion.js'
-
-// test('adds 1 + 2 to equal 3', () => {
-//   expect(sum(1, 2)).toBe(3)
-// })
+import { validarDatosUsuario } from '../funciones/validarDatosUsuario.js'
 
 test('Valida que el formato solicitado sea vinilo o mp3', () => {
   expect(validarFormatoCancion('vinilo')).toBe(true)
@@ -17,4 +14,26 @@ test('Valida que el formato solicitado sea vinilo o mp3', () => {
   expect(validarFormatoCancion(null)).toBe(false)
   expect(validarFormatoCancion(1234)).toBe(false)
   expect(validarFormatoCancion(new Date())).toBe(false)
+})
+
+test('Valida que los datos del usuario sean correctos', () => {
+  const usuarioValido = {
+    nombre: 'Andres',
+    apellido: 'Laguilavo',
+    correo: 'andres@example.com',
+    direccion: 'Calle 123, Ciudad, País',
+    contraseña: 'password123'
+  }
+  expect(() => validarDatosUsuario(usuarioValido)).not.toThrow()
+})
+
+test('Valida que los datos del usuario sean incorrectos', () => {
+  const usuarioInvalido = {
+    nombre: 1,
+    apellido: '',
+    correo: 'andres',
+    direccion: 'Calle 123',
+    contraseña: 'pass'
+  }
+  expect(() => validarDatosUsuario(usuarioInvalido)).toThrow()
 })
