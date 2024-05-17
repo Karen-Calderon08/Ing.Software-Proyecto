@@ -40,17 +40,17 @@ model Genero {
 }
 
 model Cancion {
-  id            Int             @id @default(autoincrement())
-  nombre        String
-  artista       String
-  generoId      Int
-  duracion      String
-  genero        Genero          @relation(fields: [generoId], references: [id])
-  Vinilo        Vinilo[]
-  MP3           MP3[]
-  Carrito       Carrito[]
-  Playlist      Playlist[]
-  PedidoDetalle PedidoDetalle[]
+  id             Int              @id @default(autoincrement())
+  nombre         String
+  artista        String
+  generoId       Int
+  duracion       String
+  genero         Genero           @relation(fields: [generoId], references: [id])
+  Vinilo         Vinilo[]
+  MP3            MP3[]
+  Playlist       Playlist[]
+  PedidoDetalle  PedidoDetalle[]
+  CarritoDetalle CarritoDetalle[]
 }
 
 model Vinilo {
@@ -70,6 +70,13 @@ model MP3 {
   cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
 
+model Carrito {
+  id             Int              @id @default(autoincrement())
+  usuarioId      Int
+  actualizadoEn  DateTime         @default(now())
+  Usuario        Usuario          @relation(fields: [usuarioId], references: [id])
+  CarritoDetalle CarritoDetalle[]
+}
 
 // Strings disponibles para la columna formato de la tabla Carrito
 enum FORMATO {
@@ -77,14 +84,14 @@ enum FORMATO {
   vinilo
 }
 
-model Carrito {
+model CarritoDetalle {
   id        Int     @id @default(autoincrement())
+  carritoId Int
   cancionId Int
   cantidad  Int
-  usuarioId Int
   formato   FORMATO
-  cancion   Cancion @relation(fields: [cancionId], references: [id])
-  Usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  Carrito   Carrito @relation(fields: [carritoId], references: [id])
+  Cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
 
 model Playlist {
@@ -98,9 +105,9 @@ model Playlist {
 model Pedido {
   id            Int             @id @default(autoincrement())
   fechaCreacion DateTime        @default(now())
-  cancionId     Int
-  estado        String
   usuarioId     Int
+  estado        String
+  total         Float
   PedidoDetalle PedidoDetalle[]
   Usuario       Usuario         @relation(fields: [usuarioId], references: [id])
 }
@@ -109,7 +116,7 @@ model PedidoDetalle {
   id        Int     @id @default(autoincrement())
   pedidoId  Int
   cancionId Int
-  formato   String
+  formato   FORMATO
   cantidad  Int
   pedido    Pedido  @relation(fields: [pedidoId], references: [id])
   cancion   Cancion @relation(fields: [cancionId], references: [id])
