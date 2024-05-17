@@ -13,16 +13,24 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Cliente {
-  id         Int        @id @default(autoincrement())
-  nombre     String
-  apellido   String
-  correo     String     @unique
-  direccion  String?
-  contrasena String
-  Carrito    Carrito[]
-  Playlist   Playlist[]
-  Pedido     Pedido[]
+model TipoUsuario {
+  id      Int       @id @default(autoincrement())
+  tipo    String
+  Usuario Usuario[]
+}
+
+model Usuario {
+  id          Int         @id @default(autoincrement())
+  nombre      String
+  apellido    String
+  correo      String      @unique
+  contrasena  String
+  direccion   String?
+  tipoUsuario Int
+  TipoUsuario TipoUsuario @relation(fields: [tipoUsuario], references: [id])
+  Carrito     Carrito[]
+  Playlist    Playlist[]
+  Pedido      Pedido[]
 }
 
 model Genero {
@@ -62,31 +70,39 @@ model MP3 {
   cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
 
+
+// Strings disponibles para la columna formato de la tabla Carrito
+enum FORMATO {
+  mp3
+  vinilo
+}
+
 model Carrito {
   id        Int     @id @default(autoincrement())
-  clienteId Int
   cancionId Int
   cantidad  Int
-  cliente   Cliente @relation(fields: [clienteId], references: [id])
+  usuarioId Int
+  formato   FORMATO
   cancion   Cancion @relation(fields: [cancionId], references: [id])
+  Usuario   Usuario @relation(fields: [usuarioId], references: [id])
 }
 
 model Playlist {
   id        Int     @id @default(autoincrement())
-  clienteId Int
   cancionId Int
-  cliente   Cliente @relation(fields: [clienteId], references: [id])
   cancion   Cancion @relation(fields: [cancionId], references: [id])
+  Usuario   Usuario @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
 }
 
 model Pedido {
   id            Int             @id @default(autoincrement())
   fechaCreacion DateTime        @default(now())
-  clienteId     Int
   cancionId     Int
   estado        String
-  cliente       Cliente         @relation(fields: [clienteId], references: [id])
+  usuarioId     Int
   PedidoDetalle PedidoDetalle[]
+  Usuario       Usuario         @relation(fields: [usuarioId], references: [id])
 }
 
 model PedidoDetalle {
@@ -98,4 +114,3 @@ model PedidoDetalle {
   pedido    Pedido  @relation(fields: [pedidoId], references: [id])
   cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
-
