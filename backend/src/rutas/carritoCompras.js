@@ -15,7 +15,13 @@ router.post('/agregar', async (req, res) => {
   }
 
   try {
-    validarPropiedadesObjeto(body, schema)
+    const isValidSchema = validarPropiedadesObjeto(body, schema).isValid
+    if (!isValidSchema) {
+      res.status(400).json({
+        message: 'Error al agregar la canción al carrito',
+        errors: isValidSchema.message
+      })
+    }
     const carrito = await prisma.carrito.findUnique({
       where: {
         usuarioId: 7
@@ -49,10 +55,9 @@ router.post('/agregar', async (req, res) => {
     })
     res.status(200).json({ message: 'Canción agregada al carrito' })
   } catch (error) {
-    console.log(error)
-    res.status(400).json({
+    res.status(500).json({
       message: 'Error al agregar la canción al carrito',
-      errors: error.data ?? error
+      errors: error
     })
   }
 })
