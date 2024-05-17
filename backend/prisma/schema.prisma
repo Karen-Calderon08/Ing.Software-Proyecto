@@ -72,10 +72,11 @@ model MP3 {
 
 model Carrito {
   id             Int              @id @default(autoincrement())
-  usuarioId      Int
+  usuarioId      Int              @unique
   actualizadoEn  DateTime         @default(now())
   Usuario        Usuario          @relation(fields: [usuarioId], references: [id])
   CarritoDetalle CarritoDetalle[]
+  
 }
 
 // Strings disponibles para la columna formato de la tabla Carrito
@@ -85,13 +86,13 @@ enum FORMATO {
 }
 
 model CarritoDetalle {
-  id        Int     @id @default(autoincrement())
-  carritoId Int
+  carritoId Int     
   cancionId Int
   cantidad  Int
   formato   FORMATO
   Carrito   Carrito @relation(fields: [carritoId], references: [id])
   Cancion   Cancion @relation(fields: [cancionId], references: [id])
+  @@unique([carritoId, cancionId, formato])
 }
 
 model Playlist {
