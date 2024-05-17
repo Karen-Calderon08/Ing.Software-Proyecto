@@ -146,3 +146,26 @@ git pull origin main
 ```
 
 Asegúrate de no tener cambios que no hayan hecho commit porque puede incurrir en errores al momento de hacer la combinación de ramas (merge).
+
+
+## Frontend
+
+El frontend de nuestro proyecto está construido con Vite. Aquí te explicamos cómo puedes ponerlo en marcha.
+
+### Cómo hacerlo funcionar
+
+1. Asegúrate de tener instalado Node.js y npm en tu sistema. Puedes descargarlos desde [aquí](https://nodejs.org/).
+
+2. Instala las dependencias necesarias con npm. Navega hasta el directorio del proyecto en tu terminal, a la carpeta /frontend.
+
+```sh
+cd frontend
+npm install
+```
+
+3.Inicia el servidor de desarrollo con el siguiente comando
+```sh
+npm run dev
+```
+
+Esto iniciará el servidor de desarrollo de Vite. Por defecto, puedes acceder a la aplicación en tu navegador en http://localhost:5173/.
