@@ -133,18 +133,16 @@ git push origin nombre_de_tu_rama
 
 Para mantener tu repositorio local actualizado con el repositorio remoto, sigue estos pasos:
 
-1. **Obtener los cambios del repositorio remoto:** Usa el comando `git pull origin` para obtener los cambios más recientes del repositorio remoto estando en la rama main local. Esto no afectará a tus archivos locales.
+1. **Cambiar a la rama que quieres actualizar:** Usa el comando `git checkout nombre_de_la_rama` para cambiar a la rama que quieres actualizar, ejemplo `git checkout andres`.
 
-2. **Cambiar a la rama que quieres actualizar:** Usa el comando `git checkout nombre_de_la_rama` para cambiar a la rama que quieres actualizar, ejemplo `git checkout andres`.
+2. **Obtener los cambios del repositorio remoto:** Usa el comando `git pull origin main` para obtener los cambios más recientes del repositorio remoto estando en la rama main local. Esto no afectará a tus archivos locales.
 
-3. **Fusionar los cambios en tu rama local:** Usa el comando `git merge main` para fusionar los cambios del repositorio remoto en tu rama local.
 
 Aquí están los comandos:
 
 ```sh
-git pull origin
 git checkout nombre_de_la_rama
-git merge main
-
+git pull origin main
 ```
-Asegurense de no tener cambios que no hayan echo commit por que puede incurrir en errores al momento de hacer la combinacion de ramas (merge)
+
+Asegúrate de no tener cambios que no hayan hecho commit porque puede incurrir en errores al momento de hacer la combinación de ramas (merge).
