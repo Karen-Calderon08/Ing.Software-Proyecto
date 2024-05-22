@@ -19,4 +19,12 @@ export class ClienteModelo {
       }
     })
   }
+
+  static async obtenerCliente(correo) {
+    return await prisma.usuario.findUnique({
+      where: {
+        correo
+      }
+    })
+  }
 }
