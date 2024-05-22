@@ -1,0 +1,48 @@
+javascript
+const express = require('express');
+const mysql = require('mysql');
+const { object, string } = require('zod');
+
+const app = express();
+
+// Configurar la conexión a la base de datos
+const connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'tu_usuario',
+  password: 'tu_contraseña',
+  database: 'nombre_de_tu_base_de_datos'
+});
+
+// Conectar a la base de datos
+connection.connect();
+
+// Definir el esquema de validación con Zod
+const consultaVentasAbiertasSchema = object({
+  estado: string().nonempty()
+});
+
+// Definir la ruta para consultar las ventas abiertas
+app.get('/ventas-abiertas', (req, res) => {
+  try {
+    // Validar los parámetros de consulta utilizando Zod
+    const { estado } = consultaVentasAbiertasSchema.parse(req.query);
+    const consultaVentasAbiertas = `SELECT * FROM transacciones WHERE estado = "${estado}"`;
+    
+    // Ejecutar la consulta
+    connection.query(consultaVentasAbiertas, (error, results, fields) => {
+      if (error) {
+        res.status(500).json({ error: 'Error al consultar las ventas abiertas' });
+      } else {
+        res.json(results);
+      }
+    });
+  } catch (error) {
+    res.status(400).json({ error: error.errors });
+  }
+});
+
+// Iniciar el servidor
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor escuchando en el puerto ${PORT}`);
+});
