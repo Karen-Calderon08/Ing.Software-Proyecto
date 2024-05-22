@@ -76,7 +76,6 @@ model Carrito {
   actualizadoEn  DateTime         @default(now())
   Usuario        Usuario          @relation(fields: [usuarioId], references: [id])
   CarritoDetalle CarritoDetalle[]
-  
 }
 
 // Strings disponibles para la columna formato de la tabla Carrito
@@ -86,12 +85,13 @@ enum FORMATO {
 }
 
 model CarritoDetalle {
-  carritoId Int     
+  carritoId Int
   cancionId Int
   cantidad  Int
   formato   FORMATO
   Carrito   Carrito @relation(fields: [carritoId], references: [id])
   Cancion   Cancion @relation(fields: [cancionId], references: [id])
+
   @@unique([carritoId, cancionId, formato])
 }
 
@@ -103,22 +103,29 @@ model Playlist {
   usuarioId Int
 }
 
+enum ESTADO {
+  pendiente
+  enCamino
+  entregado
+}
+
 model Pedido {
   id            Int             @id @default(autoincrement())
   fechaCreacion DateTime        @default(now())
   usuarioId     Int
-  estado        String
+  estado        ESTADO
   total         Float
   PedidoDetalle PedidoDetalle[]
   Usuario       Usuario         @relation(fields: [usuarioId], references: [id])
 }
 
 model PedidoDetalle {
-  id        Int     @id @default(autoincrement())
-  pedidoId  Int
-  cancionId Int
-  formato   FORMATO
-  cantidad  Int
-  pedido    Pedido  @relation(fields: [pedidoId], references: [id])
-  cancion   Cancion @relation(fields: [cancionId], references: [id])
+  id             Int     @id @default(autoincrement())
+  pedidoId       Int
+  cancionId      Int
+  formato        FORMATO
+  cantidad       Int
+  precioSnapshot Float
+  pedido         Pedido  @relation(fields: [pedidoId], references: [id])
+  cancion        Cancion @relation(fields: [cancionId], references: [id])
 }
