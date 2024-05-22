@@ -1,38 +1,40 @@
 import { prisma } from '../prisma.js'
 
-export async function buscarCarrito(usuarioId) {
-  return await prisma.carrito.findUnique({
-    where: {
-      usuarioId
-    }
-  })
-}
+export class CarritoComprasModelo {
+  static async buscarCarrito(usuarioId) {
+    return await prisma.carrito.findUnique({
+      where: {
+        usuarioId
+      }
+    })
+  }
 
-export async function crearCarrito(usuarioId) {
-  return await prisma.carrito.create({
-    data: {
-      usuarioId
-    }
-  })
-}
+  static async crearCarrito(usuarioId) {
+    return await prisma.carrito.create({
+      data: {
+        usuarioId
+      }
+    })
+  }
 
-export async function upsertCarrito(carritoId, cancionId, formato, cantidad) {
-  return await prisma.carritoDetalle.upsert({
-    where: {
-      carritoId_cancionId_formato: {
+  static async upsertCarrito(carritoId, cancionId, formato, cantidad) {
+    return await prisma.carritoDetalle.upsert({
+      where: {
+        carritoId_cancionId_formato: {
+          carritoId,
+          cancionId,
+          formato
+        }
+      },
+      update: {
+        cantidad
+      },
+      create: {
         carritoId,
         cancionId,
+        cantidad,
         formato
       }
-    },
-    update: {
-      cantidad
-    },
-    create: {
-      carritoId,
-      cancionId,
-      cantidad,
-      formato
-    }
-  })
+    })
+  }
 }
