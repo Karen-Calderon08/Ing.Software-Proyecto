@@ -13,10 +13,9 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model TipoUsuario {
-  id      Int       @id @default(autoincrement())
-  tipo    String
-  Usuario Usuario[]
+enum TIPOUSUARIO {
+  cliente
+  admin
 }
 
 model Usuario {
@@ -26,8 +25,7 @@ model Usuario {
   correo      String      @unique
   contrasena  String
   direccion   String?
-  tipoUsuario Int
-  TipoUsuario TipoUsuario @relation(fields: [tipoUsuario], references: [id])
+  tipoUsuario TIPOUSUARIO
   Carrito     Carrito[]
   Playlist    Playlist[]
   Pedido      Pedido[]
