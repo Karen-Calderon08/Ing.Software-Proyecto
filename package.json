@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "concurrently \"npm run dev --w=frontend\" \"npm run dev --w=backend\"",
-    "dev:backend":  "npm run dev --w=backend",
-    "dev:frontend":  "npm run dev --w=rfontend",
+    "dev:backend": "npm run dev --w=backend",
+    "dev:frontend": "npm run dev --w=rfontend",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +32,7 @@
     "eslint-plugin-promise": "^6.1.1"
   },
   "dependencies": {
+    "bcrypt": "^5.1.1",
     "concurrently": "^8.2.2",
     "zod": "^3.23.8"
   }
