@@ -14,7 +14,7 @@ export class UsuarioModelo {
 }
 ```
 
-2. Crear el controlador: Segundo, necesitas crear un controlador para tu endpoint. Los controladores se encuentran en la carpeta controlador. Por ejemplo, si estás creando un endpoint para gestionar usuarios, podrías crear un archivo llamado usuario.controlador.js.
+2. Crear el controlador: Segundo, necesitas crear un controlador para tu endpoint. Los controladores se encuentran en la carpeta controlador. Por ejemplo, si estás creando un endpoint para gestionar usuarios, podrías crear un archivo llamado usuario.controlador.js.Acaban todas las validaciones de datos, guiense de otros controladores ya hechos
 
 ```javascript
 // usuario.controlador.js
@@ -27,7 +27,7 @@ export const UsuarioControlador = {
 
 ```
 
-3. Crear el archivo de rutas: Luego, necesitas crear un archivo de rutas para tu endpoint en la carpeta rutas. Este archivo debería importar tu controlador y definir las rutas para tu endpoint.
+3. Crear el archivo de rutas: Luego, necesitas crear un archivo de rutas para tu endpoint en la carpeta rutas. Este archivo debería importar tu controlador y definir las rutas para tu endpoint. Las rutas son las url que me llevaran al contenido
 
 ```javascript
 // usuario.js
