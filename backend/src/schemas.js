@@ -20,3 +20,8 @@ export const clienteSchema = {
       .max(50, 'La dirección es demasiado larga.')
   )
 }
+
+export const authSchema = {
+  correo: z.string().email('El correo no es válido.'),
+  contrasena: z.string().min(8, 'La contraseña debe tener al menos 8 caracteres.')
+}
