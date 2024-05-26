@@ -3,7 +3,7 @@ import { agregarAlCarrito } from './agregarAlCarrito'
 // import { obtenerCarritoCompras } from './carritoCompras'
 
 async function buscarProductoPorId(id) {
-  const response = await fetch(`http://localhost:3000/api/cancion/id/${id}`)
+  const response = await fetch(`${import.meta.env.VITE_LOCAL_URL}/api/cancion/id/${id}`)
   const producto = await response.json()
   return producto
 }

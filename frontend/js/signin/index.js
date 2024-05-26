@@ -4,16 +4,19 @@ signInForm.addEventListener('submit', async (event) => {
   event.preventDefault()
   const correo = event.target[0].value
   const contrasena = event.target[1].value
-  const response = await fetch('http://localhost:3000/api/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      correo,
-      contrasena
-    })
-  })
+  const response = await fetch(
+    `${import.meta.env.VITE_LOCAL_URL}/api/auth/login`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        correo,
+        contrasena
+      })
+    }
+  )
   if (response.ok) {
     const data = await response.json()
     localStorage.setItem('token', data.token)

@@ -14,7 +14,7 @@ export const obtenerCarritoCompras = async () => {
   console.log(user)
 
   const response = await fetch(
-    `http://localhost:3000/api/carrito-compras?usuarioId=${user.id}`
+    `${import.meta.env.VITE_LOCAL_URL}/api/carrito-compras?usuarioId=${user.id}`
   )
   const carrito = await response.json()
   return carrito

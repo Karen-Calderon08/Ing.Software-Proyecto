@@ -1,6 +1,6 @@
 window.onload = async () => {
   const contenedorProductos = document.querySelector('#contenedor-productos')
-  const response = await fetch('http://localhost:3000/api/cancion')
+  const response = await fetch(`${import.meta.env.VITE_LOCAL_URL}/api/cancion`)
   const productos = await response.json()
   for (const producto of productos.songs) {
     contenedorProductos.innerHTML += `
