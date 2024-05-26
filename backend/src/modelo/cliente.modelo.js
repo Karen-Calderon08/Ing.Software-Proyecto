@@ -6,7 +6,8 @@ export class ClienteModelo {
     apellido,
     correo,
     contrasena,
-    direccion = null
+    direccion = null,
+    tipoUsuario = 'cliente'
   }) {
     return await prisma.usuario.create({
       data: {
@@ -15,7 +16,7 @@ export class ClienteModelo {
         correo,
         contrasena,
         direccion,
-        tipoUsuario: 'cliente'
+        tipoUsuario
       }
     })
   }

@@ -3,6 +3,9 @@ import { CarrtitoComprasControlador } from '../controlador/carritoCompras.contro
 
 const router = Router()
 
+router.get('/', CarrtitoComprasControlador.obtenerCarrito)
 router.post('/agregar', CarrtitoComprasControlador.agregarCancion)
+router.delete('/', CarrtitoComprasControlador.limpiarCarrito)
+router.delete('/id', CarrtitoComprasControlador.eliminarItem)
 
 export default router

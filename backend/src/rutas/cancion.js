@@ -3,5 +3,6 @@ import { CancionControlador } from '../controlador/cancion.controlador.js'
 const router = Router()
 
 router.get('/', CancionControlador.buscarCanciones)
-// HACEN FALTA MAS ENDPOINTS PARA GESTIONAR LA CREACION DE CANCIONES
+router.get('/id/:id', CancionControlador.buscarPorId)
+router.post('/registrar', CancionControlador.registrarCancion)
 export default router

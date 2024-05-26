@@ -1,13 +1,149 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
-  </head>
-  <body>
-    <div id="app"></div>
-    <script type="module" src="/main.js"></script>
-  </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>MultiShop - Online Shop Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">  
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid" style='position: sticky; top: 0; z-index: 100;'>
+        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
+            <div class="col-lg-4">
+                <a href="/" class="text-decoration-none">
+                    <span class="h1 text-uppercase text-primary bg-dark px-2">Song</span>
+                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">Stock</span>
+                </a>
+            </div>
+            <div class="col-lg-4 col-6 text-left">
+                <form action="" id='buscador'>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for products" >
+                        <button type='submit' id='boton-buscador'>
+                            <span class="input-group-text bg-transparent text-primary">
+                                <i class="fa fa-search"></i>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 col-6 text-right">
+                <div class="btn-group">
+                    <a href='/subir' id="subir-cancion" style='display: flex; justify-content: center; align-items: center; margin-right: 10px;'>
+                        <!-- Subir Una cancion -->
+                    </a>
+                    <div id='perfil' style='display: flex; justify-content: center; align-items: center;'>
+                    </div>
+                    <a id='carrito-compras-boton' class="btn btn-outline-dark btn-square" href='/cart.html'><i class="fa fa-shopping-cart"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+
+    <!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Categories</span></h2>
+        <div class="row px-xl-5 pb-3">
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="/shop.html?format=vinilo">
+                    <div class="cat-item d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Disco_de_Vinilo.jpg" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>Vinilo</h6>
+                            <small class="text-body">100 Products</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <a class="text-decoration-none" href="/shop.html?format=mp3">
+                    <div class="cat-item img-zoom d-flex align-items-center mb-4">
+                        <div class="overflow-hidden" style="width: 100px; height: 100px;">
+                            <img class="img-fluid" src="https://cdn-icons-png.flaticon.com/512/136/136507.png" alt="">
+                        </div>
+                        <div class="flex-fill pl-3">
+                            <h6>MP3</h6>
+                            <small class="text-body">100 Products</small>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- Categories End -->
+
+    <!-- Products Start -->
+    <div class="container-fluid pt-5 pb-3">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Featured Products</span></h2>
+        <div class="row px-xl-5" id='contenedor-productos'>
+            <!-- Aca van los productos -->
+            </div>
+        </div>
+    </div>
+    <!-- Products End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-dark text-secondary mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class=" col-md-12 mb-5 pr-3 pr-xl-5">
+                <h5 class="text-secondary text-uppercase mb-4">Song Stock</h5>
+                <p class="mb-4">Song Stock es una marketplace para los amanates de la musica, que buscan adquirir la mejor calidad en sonido tanto en formato MP3 como en Vinilo</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Bogota, Colombia</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>songstock@poligran.edu.co</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+57 123 456789</p>
+            </div>
+            
+        </div>
+        <div class="row border-top mx-xl-5 py-4" style="border-color: rgba(256, 256, 256, .1) !important;">
+            <div class="col-md-6 px-xl-0">
+                <p class="mb-md-0 text-center text-md-left text-secondary">
+                    &copy; <a class="text-primary" href="/">Domain</a>. All Rights Reserved. Designed
+                    by
+                    <a class="text-primary" href="https://htmlcodex.com">HTML Codex</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+
+    <!-- Template Javascript -->
+    <script type='module' src="js/main.js"></script>
+    <script type='module' src="js/index/index.js"></script>
+
+</body>
+
 </html>
