@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start": "node ./src/index.js",
+    "start": "npx prisma generate && node ./src/index.js",
     "prisma:push": "prisma db push",
     "test": "node --experimental-vm-modules --no-warnings ../node_modules/jest/bin/jest.js"
   },
