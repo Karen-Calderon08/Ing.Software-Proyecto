@@ -12,7 +12,7 @@ import { fileURLToPath } from 'url'
 dotenv.config({
   path: fileURLToPath(new URL('../../.env', import.meta.url))
 })
-
+console.log(process.env.SUPABASE_PASSWORD)
 const app = express()
 const port = process.env.PORT || 3000
 const __dirname = dirname(
