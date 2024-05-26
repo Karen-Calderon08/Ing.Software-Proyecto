@@ -1,12 +1,28 @@
 import { prisma } from '../prisma.js'
 
 export class CarritoComprasModelo {
-  static async buscarCarrito(usuarioId) {
-    return await prisma.carrito.findUnique({
+  static async buscarCarritoId(usuarioId) {
+    return await prisma.carrito.findFirst({
       where: {
         usuarioId
       }
     })
+  }
+
+  static async buscarCarrito(usuarioId) {
+    if (!usuarioId || isNaN(usuarioId)) {
+      throw new Error('El usuarioId es requerido')
+    }
+    return await prisma.$queryRaw`SELECT 
+    "Carrito".id AS CarritoId,
+    "Cancion".*,
+    "CarritoDetalle".formato,
+    "CarritoDetalle".cantidad,
+    "CarritoDetalle".precio
+   FROM "Carrito" 
+  INNER JOIN "CarritoDetalle" ON "CarritoDetalle"."carritoId" = "Carrito".id
+  INNER JOIN "Cancion" ON "CarritoDetalle"."cancionId" = "Cancion"."id"
+  WHERE "Carrito"."usuarioId" = ${usuarioId}`
   }
 
   static async crearCarrito(usuarioId) {
@@ -17,7 +33,7 @@ export class CarritoComprasModelo {
     })
   }
 
-  static async upsertCarrito(carritoId, cancionId, formato, cantidad) {
+  static async upsertCarrito(carritoId, cancionId, formato, cantidad, precio) {
     return await prisma.carritoDetalle.upsert({
       where: {
         carritoId_cancionId_formato: {
@@ -33,7 +49,28 @@ export class CarritoComprasModelo {
         carritoId,
         cancionId,
         cantidad,
-        formato
+        formato,
+        precio
+      }
+    })
+  }
+
+  static async limpiarCarrito(carritoId) {
+    return await prisma.carritoDetalle.deleteMany({
+      where: {
+        carritoId
+      }
+    })
+  }
+
+  static async eliminarItem(carritoId, itemId, formato) {
+    return await prisma.carritoDetalle.delete({
+      where: {
+        carritoId_cancionId_formato: {
+          carritoId,
+          cancionId: itemId,
+          formato
+        }
       }
     })
   }
