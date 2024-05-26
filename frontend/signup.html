@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>MultiShop - Online Shop Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Free HTML Templates" name="keywords" />
+    <meta content="Free HTML Templates" name="description" />
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon" />
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet" />
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="css/toaster.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="toast-overlay" 
+    id="toast-overlay"></div> 
+    <div class="container-fluid" style="margin-top: 100px">
+      <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4">
+        <span class="bg-secondary pr-3">Sign Up</span>
+      </h2>
+      <div class="flex px-xl-5" style='display: flex; justify-content: center;'>
+        <div class="w-50 mb-5">
+          <div class="contact-form bg-light p-30">
+            <div id="success"></div>
+            <form id="signup">
+              <div class="control-group">
+                <label class="w-100">
+                  Nombre
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    placeholder="Your Name"
+                    required="required"
+                    data-validation-required-message="Please enter your name"
+                  />
+                </label>
+              </div>
+              <div class="control-group">
+                <label class="w-100 mt-3">
+                  Apellido
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="lastname"
+                    placeholder="Your Name"
+                    required="required"
+                    data-validation-required-message="Please enter your name"
+                  />
+                </label>
+              </div>
+              <div class="control-group">
+                <label class="w-100 mt-3">
+                  Correo
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="email"
+                    placeholder="Your Name"
+                    required="required"
+                    data-validation-required-message="Please enter your name"
+                  />
+                </label>
+              </div>
+              <div class="control-group">
+                <label class="w-100 mt-3">
+                  Contraseña
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="password"
+                    placeholder="Your Name"
+                    required="required"
+                    data-validation-required-message="Please enter your name"
+                  />
+                </label>
+              </div>
+              <div class="control-group">
+                <label class="w-100 mt-3">
+                  direccion
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="direccion"
+                    placeholder="Your Name"
+                    required="required"
+                    data-validation-required-message="Please enter your name"
+                  />
+                </label>
+              </div>
+              <div class="control-group">
+                <label class="w-100 mt-3">
+                  Rol
+                  <select class="form-control" id="role" required="required">
+                    <option value="">Seleccione un rol</option>
+                    <option value="cliente">Cliente</option>
+                    <option value="proveedor">Proveedor</option>
+                  </select>
+                </label>
+              </div>
+
+              <div>
+                <button
+                  class="btn btn-primary py-2 px-4 mt-4"
+                  type="submit"
+                  id="sendMessageButton"
+                >
+                  Crear cuenta
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+    <script type="module" src="js/signup/index.js"></script>
+  </body>
+</html>
