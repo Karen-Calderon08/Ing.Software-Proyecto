@@ -1,7 +1,6 @@
 import { test, expect } from '@jest/globals'
 import { validarDatosUsuario } from '../funciones/validarDatosUsuario.js'
 
-
 test('Valida que los datos del usuario sean correctos', () => {
   const usuarioValido = {
     nombre: 'Andres',
