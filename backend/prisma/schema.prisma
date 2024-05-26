@@ -15,7 +15,7 @@ datasource db {
 
 enum TIPOUSUARIO {
   cliente
-  admin
+  proveedor
 }
 
 model Usuario {
@@ -31,19 +31,12 @@ model Usuario {
   Pedido      Pedido[]
 }
 
-model Genero {
-  id      Int       @id @default(autoincrement())
-  nombre  String
-  Cancion Cancion[]
-}
-
 model Cancion {
   id             Int              @id @default(autoincrement())
   nombre         String
   artista        String
-  generoId       Int
-  duracion       String
-  genero         Genero           @relation(fields: [generoId], references: [id])
+  duracion       Int?
+  caratula       String
   Vinilo         Vinilo[]
   MP3            MP3[]
   Playlist       Playlist[]
@@ -54,17 +47,18 @@ model Cancion {
 model Vinilo {
   id        Int     @id @default(autoincrement())
   cancionId Int
-  caratula  String
   stock     Int
+  precio    Float
   cancion   Cancion @relation(fields: [cancionId], references: [id])
+  @@unique([cancionId])
 }
 
 model MP3 {
   id        Int     @id @default(autoincrement())
   cancionId Int
   tamano    String
-  duracion  String
   calidad   String
+  precio    Float
   cancion   Cancion @relation(fields: [cancionId], references: [id])
 }
 
@@ -87,6 +81,7 @@ model CarritoDetalle {
   cancionId Int
   cantidad  Int
   formato   FORMATO
+  precio    Float
   Carrito   Carrito @relation(fields: [carritoId], references: [id])
   Cancion   Cancion @relation(fields: [cancionId], references: [id])
 
