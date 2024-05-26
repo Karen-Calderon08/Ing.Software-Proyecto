@@ -11,20 +11,23 @@ signUpForm.addEventListener('submit', async (event) => {
   const rol = event.target[5].value
 
   try {
-    const response = await fetch('http://localhost:3000/api/cliente/crear', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nombre,
-        apellido,
-        correo,
-        contrasena,
-        direccion,
-        tipoUsuario: rol
-      })
-    })
+    const response = await fetch(
+      `${import.meta.env.VITE_LOCAL_URL}/api/cliente/crear`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nombre,
+          apellido,
+          correo,
+          contrasena,
+          direccion,
+          tipoUsuario: rol
+        })
+      }
+    )
     const data = await response.json()
     if (response.status === 200) {
       alert('Usuario creado exitosamente')

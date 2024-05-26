@@ -1,4 +1,7 @@
-export default {
+import { defineConfig } from 'vite'
+
+export default defineConfig({
+  envDir: '../',
   build: {
     outDir: 'dist',
     rollupOptions: {
@@ -30,4 +33,4 @@ export default {
       ]
     }
   }
-}
+})

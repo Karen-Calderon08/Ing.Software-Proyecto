@@ -46,7 +46,7 @@ window.onload = async () => {
 
       try {
         const response = await fetch(
-          'http://localhost:3000/api/carrito-compras/id',
+          `${import.meta.env.VITE_LOCAL_URL}/api/carrito-compras/id`,
           {
             method: 'DELETE',
             headers: {
@@ -90,7 +90,7 @@ pagar.addEventListener('click', async () => {
     console.log(itemsAComprar)
 
     const response = await fetch(
-      'http://localhost:3000/api/pedidos/registrar',
+      `${import.meta.env.VITE_LOCAL_URL}/api/pedidos/registrar`,
       {
         method: 'POST',
         headers: {

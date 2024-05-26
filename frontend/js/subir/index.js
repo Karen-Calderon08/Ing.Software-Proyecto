@@ -11,21 +11,24 @@ signUpForm.addEventListener('submit', async (event) => {
   console.log({ nombre, artista, caratula, precio, stock })
 
   try {
-    const response = await fetch('http://localhost:3000/api/cancion/registrar', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        nombre,
-        artista,
-        caratula,
-        vinilo: {
-          precio,
-          stock
-        }
-      })
-    })
+    const response = await fetch(
+      `${import.meta.env.VITE_LOCAL_URL}/api/cancion/registrar`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          nombre,
+          artista,
+          caratula,
+          vinilo: {
+            precio,
+            stock
+          }
+        })
+      }
+    )
     const data = await response.json()
     if (response.status === 200) {
       alert('Registro Exitoso')

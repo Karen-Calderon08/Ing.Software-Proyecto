@@ -12,7 +12,7 @@ export function agregarAlCarrito({ cancionId, formato, precio }) {
     console.log(cantidad)
 
     const response = await fetch(
-      'http://localhost:3000/api/carrito-compras/agregar',
+      `${import.meta.env.VITE_LOCAL_URL}/api/carrito-compras/agregar`,
       {
         method: 'POST',
         headers: {

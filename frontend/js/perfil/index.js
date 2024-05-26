@@ -10,7 +10,7 @@ tituloPerfil.innerHTML += `${usuario.nombre} ${usuario.apellido}`
 window.onload = async () => {
   const contenedorPedidos = document.querySelector('#contenedor-pedidos')
   const response = await fetch(
-    `http://localhost:3000/api/pedidos?usuarioId=${usuario.id}`
+    `${import.meta.env.VITE_LOCAL_URL}/api/pedidos?usuarioId=${usuario.id}`
   )
   const pedidos = await response.json()
   console.log(pedidos)
@@ -35,7 +35,8 @@ window.onload = async () => {
                 <ul>
                     ${items
                       .map(
-                        (item) => `<li>${item.nombre} x${item.cantidad}, formato: ${item.formato}</li>`
+                        (item) =>
+                          `<li>${item.nombre} x${item.cantidad}, formato: ${item.formato}</li>`
                       )
                       .join('')}
                 </ul>

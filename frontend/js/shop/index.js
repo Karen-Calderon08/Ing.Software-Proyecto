@@ -15,7 +15,7 @@ window.onload = async () => {
     params.append('format', format)
   }
 
-  const url = new URL('http://localhost:3000/api/cancion')
+  const url = new URL(`${import.meta.env.VITE_LOCAL_URL}/api/cancion`)
   url.search = urlParams.toString()
 
   const response = await fetch(url)
