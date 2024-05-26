@@ -33,6 +33,13 @@ export class PedidoModelo {
     return await prisma.pedido.findMany({
       where: {
         usuarioId
+      },
+      include: {
+        PedidoDetalle: {
+          include: {
+            cancion: true
+          }
+        }
       }
     })
   }
