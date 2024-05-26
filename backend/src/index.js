@@ -29,6 +29,10 @@ app.use('/api/cancion', routerCancion)
 app.use('/api/carrito-compras', routerCarritoCompras)
 app.use('/api/pedidos', routerPedido)
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'))
+})
+
 app.listen(port, () => {
   console.log(`Example app listening on port http://localhost:${port}`)
 })
