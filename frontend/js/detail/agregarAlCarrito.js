@@ -4,11 +4,16 @@ export function agregarAlCarrito({ cancionId, formato, precio }) {
   const botonAgregar = document.querySelector('#agregar-al-carrito')
   const user = obtenerUsuarioActivo()
   botonAgregar.addEventListener('click', async () => {
-    const cantidad = Number(document.querySelector('#valor-cantidad').innerHTML)
-    if (user === null) {
+    if (!user) {
       alert('Necesitas iniciar sesión para agregar productos al carrito')
+      window.location.href = '/signin.html'
+    }
+    if (!formato) {
+      alert('Debes seleccionar un formato')
       return
     }
+    const cantidad = Number(document.querySelector('#valor-cantidad').innerHTML)
+
     console.log(cantidad)
 
     const response = await fetch(

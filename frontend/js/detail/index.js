@@ -99,14 +99,13 @@ window.onload = async () => {
     cantidad.innerHTML = cantidadNumero
   })
 
-  const formato = radioFormato.querySelector('input[name="format"]:checked').id
+  const formato = radioFormato.querySelector('input[name="format"]:checked')?.id
   const precio =
     formato === 'vinilo'
       ? producto.songs.Vinilo[0].precio
       : producto.songs.MP3[0].precio
   agregarAlCarrito({
-    cancionId: producto.songs.id,
-
+    cancionId: producto?.songs?.id,
     formato,
     precio
   })
